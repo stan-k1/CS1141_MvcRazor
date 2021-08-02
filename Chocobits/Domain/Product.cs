@@ -13,6 +13,7 @@ namespace Chocobits.Domain
         [Required(ErrorMessage = "A product's name cannot be blank.")]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Required(ErrorMessage = "The price field cannot be blank.")]
         public decimal Price { get; set; }
         public string ImageLoc { get; set; }
         public Category Category { get; set; }

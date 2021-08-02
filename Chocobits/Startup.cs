@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Chocobits.Data;
+using Chocobits.Domain;
 
 namespace Chocobits
 {
@@ -28,6 +29,8 @@ namespace Chocobits
             services.AddControllersWithViews();
             services.AddDbContext<ChocoContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("CS1141_Chocobits")));
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +57,7 @@ namespace Chocobits
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }

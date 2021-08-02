@@ -1,6 +1,23 @@
-﻿@model List<Product> 
+﻿@model Chocobits.Models.Products.ProductsIndexViewModel 
 @{
     ViewData["Title"] = "All Product Categories";
 }
 
-<h1>All Products</h1>
+<h1>Product Categories</h1>
+
+<ul class="list-unstyled">
+    @foreach (Category c in Model.Categories)
+    {
+        <li class="media">
+            <partial name="_CategoryPartial" model="c"/>
+        </li>
+    }
+</ul>
+
+@* <img src="assets/categories/@c.BannerLoc" class="align-self-start mr-3, categoryMedia"  *@
+@*      style="height: 100px; width: 200px; margin-top: 10px"> *@
+@* <div class="media-body"> *@
+@*     <h5 class="mt-0 mb-1">@c.Name</h5> *@
+@*     <p>@c.Description</p> *@
+@*     <a class="btn btn-primary" style="margin-bottom: 20px" asp-controller="Products" asp-action="Category" asp-route-id="@c.Id">Discover</a> *@
+@* </div> *@

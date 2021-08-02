@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chocobits.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chocobits.Data
@@ -15,9 +16,16 @@ namespace Chocobits.Data
             _context = context;
         }
 
-        public async Task<List<string>> GetCategoryNames()
+        public async Task<List<Product>> GetAllProducts()
         {
-           return await _context.Categories.Select(c => c.Name).ToListAsync();
+            return await _context.Products.ToListAsync();
+        }
+
+        public async Task<Product> GetProduct(int id)
+        {
+            return await _context.Products
+                .Include(p => p.Category)
+                .SingleOrDefaultAsync(p => p.Id==id);
         }
     }
 }

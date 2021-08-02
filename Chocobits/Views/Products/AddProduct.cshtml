@@ -6,12 +6,12 @@
 
 <h1>AddProduct</h1>
 <p></p>
-
+@System.Globalization.CultureInfo.CurrentCulture
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Manage" asp-action="AddProduct" method="post" enctype="multipart/form-data">
-            
+        <form onsubmit="return replaceFunction(document.getElementById('priceField'))" asp-controller="Manage" asp-action="AddProduct" method="post" enctype="multipart/form-data">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
@@ -25,13 +25,13 @@
                 <input asp-for="Product.Description" class="form-control" />
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
-                <label asp-for="PriceString" class="control-label">Price</label>
-                <input asp-for="PriceString" class="form-control" />
-                <span asp-validation-for="PriceString" class="text-danger"></span>
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" id="priceField" />
+                <span asp-validation-for="Product.Price" id="priceValidation" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Product.CategoryId" class="control-label"></label>
                 <select asp-for="Product.CategoryId" asp-items="Model.Categories" class="form-control"></select>
@@ -51,4 +51,22 @@
         </form>
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        function replaceFunction(element) {
+            if (element.value.includes(".")) {
+                document.getElementById('priceValidation').textContent = "Dot separators are not valid in numbers.";
+                return false;
+            }
+
+            return true;
+
+//            element.value = element.value.replace(".", ",");
+//            alert(document.getElementById('priceField').value);
+//            return false;
+        }
+    </script>
+}
 

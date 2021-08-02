@@ -1,4 +1,4 @@
-﻿@model ProductDetailsViewModel
+﻿@model Chocobits.Models.Products.ProductDetailsViewModel
 @{
     ViewData["Title"] = "Product Details";
 }
@@ -6,10 +6,17 @@
 <h1>@Model.Product.Name</h1>
 <p></p>
 
-<div class="card" style="width: 100%; height: 100%; min-width: 1px; max-height: 1px">
+<div class="card" style="width: 100%; height: 100%;">
     <img class="card-img-top" style="max-height: 500px; display: block" src="/assets/products/@Model.Product.ImageLoc" alt="@Model.Product.Name">
     <div class="card-body">
         <h5 class="card-title">@Model.Product.Name</h5>
         <p class="card-text">@Model.Product.Description</p>
     </div>
 </div>
+
+<p></p>
+
+
+<partial name="_CategoryPartial" model="@Model.Product.Category"/>
+
+<Email email-to="sales@Chocobits.com" link-text="Need more info? Contact us!" style="text-align: center; display: block"></Email>

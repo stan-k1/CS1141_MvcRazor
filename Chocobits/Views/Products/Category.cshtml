@@ -1,0 +1,5 @@
+﻿@model CategoryViewModel
+
+<h1>Categories</h1>
+
+@await Component.InvokeAsync("ProductsComponent", @Model.Products);

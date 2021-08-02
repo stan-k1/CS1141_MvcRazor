@@ -3,14 +3,16 @@ using Chocobits.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chocobits.Migrations
 {
     [DbContext(typeof(ChocoContext))]
-    partial class ChocoContextModelSnapshot : ModelSnapshot
+    [Migration("20210728120813_seedf")]
+    partial class seedf
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,7 +116,7 @@ namespace Chocobits.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
+                            CategoryId = 1,
                             Description = "6 60g Chocolate Ice Creamsicles with praline filling",
                             ImageLoc = "product_creamsicles.jpg",
                             Name = "Chocolate Ice Creamsicles",
@@ -123,7 +125,7 @@ namespace Chocobits.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Description = "Chocolate Cake with Raspberry Flavoring, 650g",
                             ImageLoc = "product_cake.jpg",
                             Name = "Chocolate and Raspberry Cake",

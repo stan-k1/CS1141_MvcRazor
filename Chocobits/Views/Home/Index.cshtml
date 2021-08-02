@@ -1,5 +1,4 @@
-﻿@using Chocobits.Data
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -12,5 +11,8 @@
     <p>
         @variable
     </p>
-
+    
+    @{
+        var product1 = _productService.GetProduct(1);
+    }
 </div>

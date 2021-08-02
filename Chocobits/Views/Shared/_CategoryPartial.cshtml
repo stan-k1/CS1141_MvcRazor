@@ -1,0 +1,13 @@
+﻿@model Category
+
+<div class="media" style="margin-bottom: 16px; padding: 10px; border: 1px solid lightgray; width: 100%; position: relative">
+    <img src="/assets/categories/@Model.BannerLoc" class="align-self-start mr-3, categoryMedia"
+         style="height: 200px; width: 400px; margin-top: 10px;">
+    <div class="media-body">
+        <h3 class="mt-0 mb-1">@Model.Name</h3>
+        <p>@Model.Description</p>
+        <a class="pull-end btn btn-primary" 
+           style="position: absolute; bottom: 40px" 
+           asp-controller="Products" asp-action="Category" asp-route-id="@Model.Id">Discover</a>
+    </div>
+</div>

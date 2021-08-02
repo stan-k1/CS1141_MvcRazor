@@ -3,14 +3,16 @@ using Chocobits.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chocobits.Migrations
 {
     [DbContext(typeof(ChocoContext))]
-    partial class ChocoContextModelSnapshot : ModelSnapshot
+    [Migration("20210728120552_seed2")]
+    partial class seed2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,7 @@ namespace Chocobits.Migrations
                         {
                             Id = 2,
                             BannerLoc = "category_pies.jpg",
-                            Description = "Cakes, Tarts and Pies. High quality premium chocolate based deserts available in a handpicked collection of various flavors and fillings.",
+                            Description = "Cakes, Tarts and Pies. Chocolate based deserts available with various flavors anf fillings.",
                             Name = "Pies"
                         },
                         new
@@ -114,7 +116,7 @@ namespace Chocobits.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
+                            CategoryId = 1,
                             Description = "6 60g Chocolate Ice Creamsicles with praline filling",
                             ImageLoc = "product_creamsicles.jpg",
                             Name = "Chocolate Ice Creamsicles",
@@ -123,7 +125,7 @@ namespace Chocobits.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Description = "Chocolate Cake with Raspberry Flavoring, 650g",
                             ImageLoc = "product_cake.jpg",
                             Name = "Chocolate and Raspberry Cake",

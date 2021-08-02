@@ -1,0 +1,13 @@
+﻿@model List<Product>
+
+@foreach (Product p in Model)
+{
+    <div class="card" style="width: 100%; height: 100%;">
+        <img class="card-img-top" style="max-height: 200px; object-fit: cover; display: block" src="/assets/products/@p.ImageLoc" alt="@p.Name">
+        <div class="card-body">
+            <h5 class="card-title">@p.Name</h5>
+            <p class="card-text">@p.Description</p>
+        </div>
+        <a class="btn btn-primary" asp-action="Details" asp-route-Id="@p.Id">Learn More</a>
+    </div>
+}

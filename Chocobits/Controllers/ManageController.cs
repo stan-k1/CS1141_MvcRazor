@@ -36,8 +36,7 @@ namespace Chocobits.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product, 
-            [Required(ErrorMessage = "The price field cannot be blank."), RegularExpression("[0-9]+[.,]?[0-9]*")] string priceString, IFormFile image)
+        public async Task<IActionResult> AddProduct(Product product, IFormFile image)
         {
             if (ModelState.IsValid)
             {
@@ -53,8 +52,8 @@ namespace Chocobits.Controllers
                         var uploads = Path.Combine(_appEnvironment.WebRootPath, "assets/products");
                         if (file.Length > 0)
                         {
-                            var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                                           Path.GetExtension(file.FileName);
+                            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
                             using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                             {
                                 await file.CopyToAsync(fileStream);
@@ -64,8 +63,6 @@ namespace Chocobits.Controllers
                         }
                     }
                 }
-
-                product.Price= decimal.Parse(priceString.Replace(".", ","));
 
                 _context.Add(product);
                     await _context.SaveChangesAsync();
