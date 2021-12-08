@@ -42,8 +42,11 @@ namespace Chocobits.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Category(int id)
+        [Route("{controller}/{action}")]
+        public async Task<IActionResult> Category([FromQuery] int id)
         {
+            if (id==0) return RedirectToAction("Index");
+
             Category category = await _categoryService.GetCategory(id);
             return View(new CategoryViewModel()
             {
